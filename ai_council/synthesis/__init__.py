@@ -1,0 +1,1 @@
+"""Synthesis layer for final output generation."""

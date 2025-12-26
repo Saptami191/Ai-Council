@@ -1,0 +1,80 @@
+# Example configuration for AI Council
+# Copy this file to ai_council_config.yaml and customize for your needs
+
+# Logging configuration
+logging:
+  level: INFO
+  format_json: false
+  include_timestamp: true
+  include_caller: false
+
+# Execution behavior
+execution:
+  default_mode: balanced  # fast, balanced, best_quality
+  max_parallel_executions: 5
+  default_timeout_seconds: 60.0
+  max_retries: 3
+  enable_arbitration: true
+  enable_synthesis: true
+  default_accuracy_requirement: 0.8
+
+# Cost management
+cost:
+  max_cost_per_request: 10.0
+  currency: USD
+  enable_cost_tracking: true
+  cost_alert_threshold: 5.0
+
+# Model configurations
+models:
+  gpt-4:
+    provider: openai
+    api_key_env: OPENAI_API_KEY
+    base_url: null
+    max_retries: 3
+    timeout_seconds: 30.0
+    cost_per_input_token: 0.00003
+    cost_per_output_token: 0.00006
+    max_context_length: 8192
+    capabilities:
+      - reasoning
+      - code_generation
+      - creative_output
+      - debugging
+    enabled: true
+
+  claude-3-sonnet:
+    provider: anthropic
+    api_key_env: ANTHROPIC_API_KEY
+    base_url: null
+    max_retries: 3
+    timeout_seconds: 30.0
+    cost_per_input_token: 0.000015
+    cost_per_output_token: 0.000075
+    max_context_length: 200000
+    capabilities:
+      - reasoning
+      - research
+      - fact_checking
+      - verification
+    enabled: true
+
+  gpt-3.5-turbo:
+    provider: openai
+    api_key_env: OPENAI_API_KEY
+    base_url: null
+    max_retries: 3
+    timeout_seconds: 20.0
+    cost_per_input_token: 0.0000015
+    cost_per_output_token: 0.000002
+    max_context_length: 16384
+    capabilities:
+      - reasoning
+      - creative_output
+    enabled: true
+
+# System settings
+debug: false
+environment: production
+data_dir: ./data
+cache_dir: ./cache
